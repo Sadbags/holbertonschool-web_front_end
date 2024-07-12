@@ -653,7 +653,7 @@ ul.row {
 	transform: scale(1.2);
 }
 
-.card-work .card-outer {
+.card-work:hover .card-outer {
 	transform: scale(0.95);
 }
 
