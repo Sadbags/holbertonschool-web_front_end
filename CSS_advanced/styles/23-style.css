@@ -626,7 +626,7 @@ ul.row {
 }
 
 .footer-address {
-	padding: var(--footer-padding);
+	padding: var(--text-color);
 }
 
 .social-link {
