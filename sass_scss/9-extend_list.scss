@@ -1,0 +1,15 @@
+$text-color: #00FF00;
+$text-color2: #FF0000;
+
+
+.info, .success, .warning {
+	font-size: 12px;
+}
+
+.success {
+	color: $text-color;
+}
+
+.warning {
+	color: $text-color2;
+}
