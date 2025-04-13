@@ -2,9 +2,9 @@ $text-color: #FF0000;
 $text-color2: #00FF00;
 
 button {
-	color: #00FF00;
+	color: $text-color;
 
-	button:hover {
+	&:hover {
 		color: $text-color2;
 	}
 }
