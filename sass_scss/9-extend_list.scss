@@ -7,9 +7,11 @@ $text-color2: #FF0000;
 }
 
 .success {
+	@extend .info;
 	color: $text-color;
 }
 
 .warning {
+	@extend .info;
 	color: $text-color2;
 }
