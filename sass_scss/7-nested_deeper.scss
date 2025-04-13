@@ -1,3 +1,4 @@
+// double nest
 $font-size: 14px;
 $font-size2: 16px;
 $font-size3: 12px;
@@ -9,7 +10,7 @@ body {
 	h1 {
 		font-size: $font-size2;
 
-		>.smaller {
+		&.smaller {
 			font-size: $font-size3;
 		}
 	}
