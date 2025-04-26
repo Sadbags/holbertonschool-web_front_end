@@ -552,7 +552,7 @@
 	  }
 
 	  .main-article {
-		padding: 5rem;
+		padding: 5rem 0;
 	}
 
 	/* Post
@@ -566,7 +566,7 @@
 		width: 100%;
 	}
 
-	.post-article {
-		order: 1;
+	.post-aside {
+		order: -1;
 		min-width: 20%;
 	}
