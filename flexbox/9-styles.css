@@ -374,10 +374,10 @@
 		flex-wrap: wrap;
 	}
 
-/* Section ABOUT US ============================= */
-	.col section-about-us {
+	 /* Section ABOUT US ============================= */
+	 .section-about-us [class*='col-'] {
 		align-self: center;
-	}
+	  }
 
   /*** 4. CARD ***/
 
