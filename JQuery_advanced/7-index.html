@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Task 0</title>
+	<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<script>
+
+        function createSearchForm() {
+            const form = $('<form></form>');
+            const input = $('<input type="text">');
+            const submitButton = $('<input type="submit">');
+            const ulElement = $('<ul></ul>');
+
+
+            form.append(input);
+            form.append(submitButton);
+            form.append(ulElement);
+
+
+            $('body').append(form);
+
+
+            form.on('submit', function(event) {
+                event.preventDefault();
+                const searchText = input.val();
+                queryWikipedia(searchText);
+            });
+        }
+
+
+        function addNewArticle(id, title, snippet) {
+            const li = $('<li></li>');
+
+            const p1 = $('<p></p>');
+            const span = $('<span></span>').text('id - ');
+            const boldTitle = $('<b></b>').text(title);
+            p1.append(span).append(boldTitle);
+
+            const p2 = $('<p></p>').text(snippet);
+
+            li.append(p1).append(p2);
+
+
+            $('ul').append(li);
+        }
+
+        function queryWikipedia(search) {
+            if (!search.trim()) {
+                alert('Please enter a search term');
+                return;
+            }
+
+            const data = {
+                action: 'query',
+                format: 'json',
+                list: 'search',
+                srsearch: search
+            };
+
+
+            $.ajax({
+                url: 'https://en.wikipedia.org/w/api.php',
+                data: data,
+                dataType: 'json',
+                success: function(response) {
+                    const results = response.query.search;
+                    if (results.length > 0) {
+                        results.forEach(result => {
+
+                            addNewArticle(result.pageid, result.title, result.snippet);
+                        });
+                    } else {
+                        alert('No results found');
+                    }
+                },
+                error: function() {
+                    alert('Error querying Wikipedia');
+                }
+            });
+        }
+
+
+        $(document).ready(function() {
+            createSearchForm();
+        });
+    </script>
+</body>
+</html>
