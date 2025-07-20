@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic cookie</title>
+</head>
+<body>
+ <form>
+    <div id="loginform">
+    <h1>Login to the website</h1>
+    <input type="text" id="firstname" placeholder="firstname">
+    <input type="email" id="email" placeholder="email">
+    <button type="button" onclick="setCookies()">Log me in</button>
+    </div>
+</form>
+<script>
+    function setCookies() {
+        const firstname = document.getElementById("firstname").value;
+        const email = document.getElementById("email").value;
+        const date = new Date()
+        date.setTime(date.getTime() + (10 * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + date.toUTCString();
+
+
+        document.cookie = `firstname=${firstname}; path=/; ${expires}`;
+        document.cookie = `email=${email}; path=/; ${expires}`;
+
+        }
+    function showCookies(){
+        const p = document.createElement('p');
+        p.innerHTML = `Cookies: ${document.cookie}`;
+        document.body.appendchild(p)
+    }
+    function getCookie(name) {
+            let decodeCookie = decodeURIComponent(document.cookie);
+            let na = decodeCookie.split(';');
+            for (let i of na){
+                let cookie = i.split("=");
+                if (cookie[0].trim() == name) {
+                    return cookie[1];
+
+                }
+            }
+        }
+
+    function showForm(){
+        const welcomeMessage = document.getElementById("welcomeMessage");
+        if (welcomeMessage) {
+            welcomeMessage.remove();
+
+        const loginform = document.getElementById(".login-container");
+        loginform.style.display = "block";
+        }
+    }
+    function hideForm(){
+        const loginform = document.getElementById(".login-container");
+        loginform.style.display = "none";
+    }
+    function deleteCookiesAndShowForm() {
+    const expires = "expires=Thu, 01 Jan 1970 00:00:00 UTC";
+
+    document.cookie = `firstname=; ${expires}; path=/`;
+    document.cookie = `email=; ${expires}; path=/`;
+
+    showForm();
+}
+
+function showWelcomeMessageOrForm() {
+    const firstname = getCookie('firstname');
+    if (firstname) {
+        const welcomeMessage = document.createElement('h1');
+        welcomeMessage.innerHTML = `Welcome ${firstname} <a href="#" onclick="deleteCookiesAndShowForm()">(logout)</a>`;
+        document.body.appendChild(welcomeMessage);
+    } else {
+        showForm();
+    }
+}
+
+</script>
+</body>
+</html>

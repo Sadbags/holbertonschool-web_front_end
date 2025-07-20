@@ -1,0 +1,17 @@
+{
+    "name": "cookies_local_storage",
+    "version": "1.0.0",
+    "description": "<div style=\"text-align: center;\">\r <img src=\"Cookies_local_storage/cookie-local-storage-.webp\" height=\"350\">\r </div>",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+      "webpack": "^5.97.1",
+      "webpack-cli": "^6.0.1",
+      "webpack-dev-server": "^5.2.0"
+    }
+  }
